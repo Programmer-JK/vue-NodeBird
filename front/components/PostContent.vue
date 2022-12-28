@@ -50,6 +50,9 @@ export default {
         canUnfollow() {
             return this.me && this.post.User.id !== this.me.id && this.me.Followings.find(v => v.id === this.post.User.id);
         },
+        posts() {
+            this.$store.state.posts.MainPosts;
+        }
     },
     methods: {
         onFollow() {

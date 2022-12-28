@@ -16,6 +16,10 @@ export const mutations = {
     const index = state.mainPosts.findIndex(v => v.id === payload.postId);
     state.mainPosts.splice(index, 1);
   },
+  editMainPost(state, payload) {
+    const index = state.mainPosts.findIndex(v => v.id === payload.postId);
+    state.mainPosts.splice(index, 1);
+  },
   loadComments(state, payload) {
     const index = state.mainPosts.findIndex(v => v.id === payload.postId);
     Vue.set(state.mainPosts[index], 'Comments', payload.data);
@@ -81,6 +85,19 @@ export const actions = {
 
       });
   },
+
+  edit({ commit }, payload) {
+    this.$axios.post(`/post/${payload.postId}`, {
+      withCredentials: true,
+    })
+      .then(() => {
+        commit('editMainPost', payload);
+      })
+      .catch(() => {
+
+      });
+  },
+
   addComment({ commit }, payload) {
     this.$axios.post(`/post/${payload.postId}/comment`, {
       content: payload.content,

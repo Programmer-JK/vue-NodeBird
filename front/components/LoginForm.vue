@@ -40,6 +40,7 @@ export default {
       passwordRules: [
         v => !!v || '비밀번호는 필수입니다.',
       ],
+      post: '',
     };
   },
   fetch() {
@@ -49,6 +50,9 @@ export default {
     me() {
       return this.$store.state.users.me;
     },
+    posts() {
+      return this.$store.state.posts.MainPosts;
+    }
   },
   methods: {
     onSubmitForm() {

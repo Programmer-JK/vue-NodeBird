@@ -33,6 +33,10 @@
         </v-menu>
       </v-card-actions>
     </v-card>
+    <template v-if="EditingOpened">
+      <post-form></post-form>
+
+    </template>
     <template v-if="commentOpened">
       <comment-form :post-id="post.id" />
       <v-list>
@@ -91,7 +95,9 @@ export default {
       });
     },
     onEditPost() {
-
+      this.$store.dispatch('posts/edit', {
+        postId: this.post.id,
+      });
     },
     onToggleComment() {
       if (!this.commentOpened) {

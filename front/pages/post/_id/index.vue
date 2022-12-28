@@ -19,6 +19,7 @@ export default {
         }
     },
     fetch({ store, params }) {
+        console.log('page index fetch');
         return store.dispatch('posts/loadPost', params.id);
     },
     head() {
@@ -27,7 +28,7 @@ export default {
         };
     }
 }
-</script>
+pt>
 
 <style>
 
