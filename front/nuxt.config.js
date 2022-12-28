@@ -36,18 +36,21 @@ module.exports = {
     moment : {
         locales : ['ko'],
     },
-    build : {
-        analyze : false,
-        extend(config, {isClient, isServer}){
-            console.log('webpack', config, isClient, isServer);
+    build: {
+      analyze: false,
+      extend(config, { isClient, isServer, isDev }) {
+        if (isServer && !isDev) {
+          config.devtool = 'hidden-source-map';
         }
+        console.log('webpack', config, isServer, isClient);
+      },
     },
     vuetify : {
         defaultAsserts : true,
     },
     axios : {
-        browserBaseURL : 'http://localhost:3085',
-        baseURL : 'http://localhost:3085',
+      browserBaseURL: process.env.NODE_ENV === 'production' ? 'https://api.nodebird.com/api' : 'http://localhost:3085',
+      baseURL: process.env.NODE_ENV === 'production' ? 'https://api.nodebird.com/api' : 'http://localhost:3085',
         https : false,
     },
     server: {
