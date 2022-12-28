@@ -51,6 +51,6 @@ module.exports = {
         https : false,
     },
     server: {
-        port: 3080,
+        port: process.env.PORT || 3080,
     },
 }
