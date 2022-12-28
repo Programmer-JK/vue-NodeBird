@@ -15,7 +15,6 @@ const userRouter = require('./routes/user');
 const postRouter = require('./routes/post');
 const postsRouter = require('./routes/posts');
 const hashtagRouter = require('./routes/hashtag');
-const { default: helmet } = require('helmet');
 const app = express();
 
 dotenv.config();
