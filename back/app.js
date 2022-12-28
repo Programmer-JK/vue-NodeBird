@@ -18,7 +18,7 @@ const hashtagRouter = require('./routes/hashtag');
 const app = express();
 
 dotenv.config();
-db.sequelize.sync({force : true});
+db.sequelize.sync();
 passportConfig();
 
 if (prod) {
