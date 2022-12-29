@@ -26,7 +26,7 @@ if (prod) {
   app.use(hpp());
   app.use(morgan('combined'));
   app.use(cors({
-    origin: 'jknodebird.site:3080',
+    origin: 'http://jknodebird.site:80',
     credentials: true,
   }));
 } else {
