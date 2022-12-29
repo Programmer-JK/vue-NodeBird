@@ -26,13 +26,13 @@ if (prod) {
   app.use(hpp());
   app.use(morgan('combined'));
   app.use(cors({
-    origin: 'http://vue.nodebird.com',
+    origin: 'jknodebird.site:3080',
     credentials: true,
   }));
 } else {
   app.use(morgan('dev'));
   app.use(cors({
-    origin: 'http://localhost:3081',
+    origin: 'http://localhost:3080',
     credentials: true,
   }));
 }

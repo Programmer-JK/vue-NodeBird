@@ -44,7 +44,7 @@ export default {
     };
   },
   fetch() {
-
+    console.log(process.env);
   },
   computed: {
     me() {
