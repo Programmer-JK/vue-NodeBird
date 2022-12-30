@@ -1,26 +1,21 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const AWS = require('aws-sdk');
-const multerS3 = require('multer-s3');
 
 const db = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
 const router = express.Router();
 
-AWS.config.update({
-  region : 'ap-northeast-2a',
-  accessKeyId: process.env.S3_ACCESS_KEY_ID,
-  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
-})
-
 const upload = multer({
-  storage: multerS3({
-    s3: new AWS.S3(),
-    bucket: 'jk-vue-nodebird',
-    key(req, file, cb) {
-      cb(null, `original/${Date.now()}${path.basename(file.originalname)}`)
+  storage: multer.diskStorage({
+    destination(req, file, done) {
+      done(null, 'uploads');
+    },
+    filename(req, file, done) {
+      const ext = path.extname(file.originalname);
+      const basename = path.basename(file.originalname, ext); // 제로초.png, basename = 제로초, ext = .png
+      done(null, basename + Date.now() + ext);
     },
   }),
   limit: { fileSize: 20 * 1024 * 1024 },

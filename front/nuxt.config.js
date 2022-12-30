@@ -3,6 +3,9 @@ module.exports = {
         title: 'NodeBird',
         meta: [{
           charset: 'utf-8',
+        },{
+          name : 'referrer',
+          content : 'no-referrer-when-downgrade'
         }, {
           name: 'viewport',
           content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=yes,viewport-fit=cover',
@@ -49,8 +52,8 @@ module.exports = {
         defaultAsserts : true,
     },
     axios : {
-      browserBaseURL: process.env.NODE_ENV === 'production' ? 'http://api.jknodebird.com' : 'http://localhost:3085',
-      baseURL: process.env.NODE_ENV === 'production' ? 'http://api.jknodebird.com' : 'http://localhost:3085',
+      browserBaseURL: process.env.NODE_ENV === 'production' ? 'http://api.jknodebird.site:80' : 'http://localhost:3085',
+      baseURL: process.env.NODE_ENV === 'production' ? 'http://api.jknodebird.site:80' : 'http://localhost:3085',
         https : false,
     },
     server: {

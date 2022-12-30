@@ -18,7 +18,7 @@ const hashtagRouter = require('./routes/hashtag');
 const app = express();
 
 dotenv.config();
-db.sequelize.sync();
+db.sequelize.sync({force:'true'});
 passportConfig();
 
 if (prod) {
@@ -26,7 +26,7 @@ if (prod) {
   app.use(hpp());
   app.use(morgan('combined'));
   app.use(cors({
-    origin: 'http://jknodebird.site:80',
+    origin: 'http://vue.jknodebird.site:80',
     credentials: true,
   }));
 } else {
