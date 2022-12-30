@@ -26,7 +26,7 @@ if (prod) {
   app.use(hpp());
   app.use(morgan('combined'));
   app.use(cors({
-    origin: 'http://vue.jknodebird.site:80',
+    origin: 'http://vue.jknodebird.site',
     credentials: true,
   }));
 } else {
@@ -47,7 +47,7 @@ app.use(session({
   cookie: {
     httpOnly: true,
     secure: false,
-    domain: prod  && '.nodebird.com',
+    domain: prod  && '.jknodebird.site',
   },
 }));
 app.use(passport.initialize());
