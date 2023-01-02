@@ -203,6 +203,7 @@ export const actions = {
       withCredentials: true,
     })
       .then((res) => {
+        console.log('image clear', );
         commit('concatImagePaths', res.data);
       })
       .catch((err) => {
